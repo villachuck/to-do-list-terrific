@@ -29,8 +29,8 @@ To start both frontend and backend servers concurrently run:
 
 * npm start
 
-* Frontend runs at: http://localhost:3000
-* Backend API available at: http://localhost:4000/api/toDoList
+-Frontend runs at: http://localhost:3000
+-Backend API available at: http://localhost:4000/api/toDoList
 
 ## How it works?
 
