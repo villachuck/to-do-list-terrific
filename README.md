@@ -34,3 +34,5 @@ Click on the radio button to reveal the following options:
 * Mark as done (checkmark icon).
 * Update To-Do List (pencil icon).
 * Delete To-Do List (trash can icon).
+
+The "Update To-Do List" button will open a popup where you can edit the task text.
