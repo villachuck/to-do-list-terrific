@@ -16,7 +16,7 @@ MONGO_URI=mongodb://localhost:27017/todolist
 
 3. Install dependencies
 
-From the root of the project, run the next command to install dependencies for both frontend and backend: "npm install".
+From the root of the project, run the "npm install" command to install dependencies for both frontend and backend.
 
 4. Run the App
 
