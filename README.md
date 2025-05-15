@@ -16,11 +16,18 @@ MONGO_URI=mongodb://localhost:27017/todolist
 
 3. Install dependencies
 
-From the root of the project, run the "npm install" command to install dependencies for both frontend and backend.
+From the root of the project, run:
+
+* npm install
+* npm install --prefix frontend
+
+These commands install dependencies for both frontend and backend.
 
 4. Run the App
 
-To start both frontend and backend servers concurrently run: "npm run dev".
+To start both frontend and backend servers concurrently run: 
+
+* npm start
 
 * Frontend runs at: http://localhost:3000
 * Backend API available at: http://localhost:4000/api/toDoList
