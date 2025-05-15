@@ -6,7 +6,7 @@ Welcome to the To-Do List app for Terrific's test.
 
 Follow next steps:
 
-1. Clone this repository.
+1. Clone this repository (https://github.com/villachuck/to-do-list-terrific.git).
 2. Add on the "backend" folder a .env file with the following info:
 
 PORT=4000
