@@ -13,13 +13,15 @@ const TodoList: React.FC = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [descriptionTask, setDescriptionTask] = useState('');
     const [selectedId, setSelectedId] = useState<string | null>(null);
-    const [updateTask, setUpdateTask] = useState<Task | null>(null);
-    const [openPopUp, setOpenPopUp] = useState<boolean>(false);
+    const [updateTask, setUpdateTask] = useState<Task | null>(null);    
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+    console.log(apiUrl);
 
 
     const getTaskList = async () => {
         try {
-            const response = await axios.get<Task[]>('http://localhost:4000/api/toDoList');
+            const response = await axios.get<Task[]>(`${apiUrl}/api/toDoList`);
             setTasks(response.data);
             console.log(response.data);
         }
@@ -36,7 +38,7 @@ const TodoList: React.FC = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post<Task>('http://localhost:4000/api/toDoList', {
+            const response = await axios.post<Task>('${apiUrl}/api/toDoList', {
                 task: descriptionTask
             });
 
@@ -51,7 +53,7 @@ const TodoList: React.FC = () => {
     const setAsDone = async (taskId: string, isActive: boolean) => {
 
         try {
-            await axios.put(`http://localhost:4000/api/toDoList/${taskId}`, {
+            await axios.put(`${apiUrl}/api/toDoList/${taskId}`, {
                 active: !isActive
             });
 
@@ -64,7 +66,7 @@ const TodoList: React.FC = () => {
 
     const modifyTask = async (modifiedData: Task) => {
         try {
-            await axios.put(`http://localhost:4000/api/toDoList/${modifiedData._id}`, modifiedData);
+            await axios.put(`${apiUrl}/api/toDoList/${modifiedData._id}`, modifiedData);
             setUpdateTask(null);
             getTaskList();
         } catch (error) {
@@ -75,7 +77,7 @@ const TodoList: React.FC = () => {
     const removeTask = async (taskId: string) => {
 
         try {
-            await axios.delete(`http://localhost:4000/api/toDoList/${taskId}`);
+            await axios.delete(`${apiUrl}/api/toDoList/${taskId}`);
             getTaskList();
         }
         catch (error) {
