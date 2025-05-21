@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import "./TodoList.css";
 import UpdatesPopUp from '../UpdatesPopUp/UpdatesPopUp';
+import ConfirmPopUp from '../ConfirmPopUp/ConfirmPopUp';
 import { ToastContainer, toast } from 'react-toastify';
 
 type Task = {
@@ -19,6 +20,7 @@ const TodoList: React.FC = () => {
     const [loader, setLoader] = useState<boolean>(false);    
     const [loaderTasks, setLoaderTasks] = useState<boolean>(false);
     const [loaderButton, setLoaderButton] = useState<boolean>(false);  
+    const [popUpDelete, setPopUpDelete] = useState<string | null>(null);  
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const getTaskList = async () => {
@@ -102,8 +104,12 @@ const TodoList: React.FC = () => {
         }      
     }
 
+    const handleDeleteClic = (taskId: string) => {
+        setPopUpDelete(taskId);
+    }
+
     const removeTask = async (taskId: string) => {
-        setLoaderTasks(true);
+        setLoaderTasks(true);        
 
         try {
             await axios.delete(`${apiUrl}/api/toDoList/${taskId}`);
@@ -161,7 +167,7 @@ const TodoList: React.FC = () => {
                                             <>
                                                 <div className='action_btn' onClick={() => setAsDone(t._id, t.active)}><img src='/check_icon.png' alt='Icon mark as done' /></div>
                                                 <div className='action_btn' onClick={() => {setUpdateTask(t)}}><img src='/update_icon.png' alt='Icon update' /></div>
-                                                <div className='action_btn' onClick={() => removeTask(t._id)}><img src='trash_icon.png' alt='Icon delete' /></div>
+                                                <div className='action_btn' onClick={() =>handleDeleteClic(t._id)}><img src='trash_icon.png' alt='Icon delete' /></div>
                                             </>
                                         )
                                     }
@@ -177,11 +183,20 @@ const TodoList: React.FC = () => {
         </div>
         {updateTask && (
             <UpdatesPopUp 
-            allData={updateTask} 
-            onClose={() => setUpdateTask(null)} 
-            onSave={modifyTask}
-            onLoad={loaderButton} 
-        />    
+                allData={updateTask} 
+                onClose={() => setUpdateTask(null)} 
+                onSave={modifyTask}
+                onLoad={loaderButton} 
+            />    
+        )}
+        {popUpDelete && (
+            <ConfirmPopUp
+                onClose={() => setPopUpDelete(null)}
+                onConfirm={() => {
+                    removeTask(popUpDelete);
+                    setPopUpDelete(null);
+                }}
+            />
         )}
         <ToastContainer
             position="top-right"
