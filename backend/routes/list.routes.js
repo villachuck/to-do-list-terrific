@@ -48,6 +48,7 @@ const updateTaskHandler = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 router.put("/:id", updateTaskHandler);
+
 const deleteTaskHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
