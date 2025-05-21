@@ -32,7 +32,7 @@ To start both frontend and backend servers concurrently run:
 * npm start
 
 1. Frontend runs at: http://localhost:3000
-2. Backend API available at: http://localhost:4000/api/toDoList
+2. Backend API available at: https://to-do-list-wvsr.onrender.com/api/toDoList
 
 ## How it works?
 
