@@ -6,15 +6,17 @@ Welcome to the To-Do List app for Terrific's test.
 
 Follow next steps:
 
-1. Clone this repository (git clone https://github.com/villachuck/to-do-list-terrific.git) and use main branch.
+1. Clone this repository (git clone https://github.com/villachuck/to-do-list-terrific.git) and use the main branch.
 2. Add on the "backend" folder a .env file with the following info:
 
 PORT=4000
 MONGO_URI=mongodb://localhost:27017/todolist
 
-(If you're using MongoDB Atlas, replace the MONGO_URI with your connection string).
+3. Since the To-Do List app uses MongoDB as its database, I deployed the backend on Render. It's currently hosted on a free tier and will be removed after the evaluation. With that in mind, please add a .env file inside the frontend folder with the following content:
 
-3. Install dependencies
+REACT_APP_API_URL=https://to-do-list-wvsr.onrender.com
+
+4. Install dependencies
 
 From the root of the project, run:
 
@@ -23,7 +25,7 @@ From the root of the project, run:
 
 These commands install dependencies for both frontend and backend.
 
-4. Run the App
+5. Run the App
 
 To start both frontend and backend servers concurrently run: 
 
